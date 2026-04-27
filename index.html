@@ -7,6 +7,14 @@
   <meta name="description" content="Sindre Stolt-Nielsen — M.Sc. in Information Technology & Economics at UiB, currently on exchange at UC Berkeley. System developer building automations, dashboards, and trading algorithms." />
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="apple-touch-icon" href="images/favicon.png" />
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ei Ni init zi Gi Nr Ui Xi Vi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync ln identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Qi createPersonProfile setInternalOrTestUser sn qi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ji debug Fr rn getPageViewId captureTraceFeedback captureTraceMetric Bi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_xXyF6xHzTobXukwaDWUjLxZCuC3W6ZLvP7TJpK4PWC7t', {
+      api_host: 'https://us.i.posthog.com',
+      defaults: '2026-01-30',
+      person_profiles: 'identified_only'
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -393,6 +401,7 @@
       display: flex; align-items: flex-start; justify-content: space-between;
       gap: 16px;
       margin-bottom: 18px;
+      flex-wrap: wrap;
     }
     .role-company {
       font-family: 'Fraunces', serif;
@@ -621,8 +630,7 @@
       color: var(--ink);
     }
     .contact-head em { font-style: italic; color: var(--burgundy); }
-    .contact-break { display: inline; }
-    @media (min-width: 900px) { .contact-break { display: block; height: 0; } }
+    .contact-break { display: block; height: 0; }
     .contact-head a {
       color: inherit;
       text-decoration: underline;
@@ -915,6 +923,8 @@
     <div class="skills-wrap reveal">
       <span class="skill-tag">Python</span>
       <span class="skill-tag">SQL</span>
+      <span class="skill-tag">Excel</span>
+      <span class="skill-tag">PowerPoint</span>
       <span class="skill-tag">Power BI</span>
       <span class="skill-tag">DAX</span>
       <span class="skill-tag">Power Query</span>
@@ -923,6 +933,8 @@
       <span class="skill-tag">REST APIs</span>
       <span class="skill-tag">SharePoint</span>
       <span class="skill-tag">Git/GitHub</span>
+      <span class="skill-tag">Vercel</span>
+      <span class="skill-tag">Antigravity</span>
       <span class="skill-tag">Dashboard Development</span>
       <span class="skill-tag">Workflow Automation</span>
     </div>
@@ -1033,7 +1045,7 @@
     <div class="bento">
       <a href="https://github.com/Sindre31/ML_Model_Fish_Data" target="_blank" rel="noopener" class="bento-card bento-span-2 reveal">
         <div class="project-head">
-          <h3 class="project-title">ML Model &mdash; Fish Data</h3>
+          <h3 class="project-title">Fish Data ML</h3>
           <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </div>
         <div class="project-tag">Machine Learning</div>
