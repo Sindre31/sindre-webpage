@@ -1,0 +1,146 @@
+/* ============================================================
+   SHARED THEME — Sindre Stolt-Nielsen
+   Tech / brutalist canvas · elegant serif display · mono labels
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:        #08080A;
+  --bg-1:      #0B0B0E;
+  --surface:   #101015;
+  --surface-2: #16161D;
+  --line:      rgba(236,234,227,0.10);
+  --line-2:    rgba(236,234,227,0.20);
+  --fg:        #ECEAE3;
+  --fg-dim:    #9C988F;
+  --fg-faint:  #5B5852;
+  /* accent is overridden per-session via localStorage (see head script) */
+  --accent:    #C2F24A;
+  --accent-ink:#08080A;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --ui:    'Space Grotesk', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--ui);
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+a { color: inherit; }
+
+/* ── type helpers ── */
+.serif { font-family: var(--serif); font-weight: 400; }
+.mono  { font-family: var(--mono); }
+.ital  { font-style: italic; }
+
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+.label--accent { color: var(--accent); }
+
+/* ── shared brutalist corner ticks ── */
+.tick {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+/* ── focus ── */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ── film grain + scanline overlays (shared) ── */
+.fx-grain, .fx-scan {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+.fx-grain {
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 0.6s steps(3) infinite;
+}
+.fx-scan {
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.16) 3px,
+    rgba(0,0,0,0) 4px
+  );
+}
+@keyframes grainShift {
+  0% { transform: translate(0,0); }
+  33% { transform: translate(-4%, 2%); }
+  66% { transform: translate(3%, -3%); }
+  100% { transform: translate(0,0); }
+}
+
+/* ── page wipe transition (shared) ── */
+.wipe {
+  position: fixed; inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  pointer-events: none;
+}
+.wipe.in  { animation: wipeIn 0.55s cubic-bezier(0.7,0,0.3,1) forwards; }
+.wipe.out { transform: scaleY(1); transform-origin: top; animation: wipeOut 0.6s cubic-bezier(0.7,0,0.3,1) forwards; }
+@keyframes wipeIn  { from { transform: scaleY(0); transform-origin: bottom; } to { transform: scaleY(1); transform-origin: bottom; } }
+@keyframes wipeOut { from { transform: scaleY(1); transform-origin: top; } to { transform: scaleY(0); transform-origin: top; } }
+
+.wipe-mark {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0;
+}
+.wipe.in .wipe-mark, .wipe.out .wipe-mark { animation: markBlink 0.5s steps(2) 0.1s 2; }
+@keyframes markBlink { 0%,100%{opacity:0;} 50%{opacity:1;} }
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-grain { animation: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; }
+}
+
+/* ── animation safety net ──────────────────────────────────
+   Some embedded/preview contexts freeze the CSS animation clock
+   at frame 0, which would leave "animate-in-from-hidden" content
+   stuck hidden. A JS timer adds .anim-settled after the intro
+   would have finished, forcing the visible end-state regardless. */
+html.anim-settled .rev,
+html.anim-settled .rise {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+html.anim-settled .mask > span {
+  animation: none !important;
+  transform: none !important;
+}
