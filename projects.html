@@ -97,7 +97,7 @@
   /* ── reveal (base visible) ── */
   @keyframes up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
   .rise { animation: up .9s cubic-bezier(0.2,0.7,0.2,1) backwards; }
-  .r1{animation-delay:.05s} .r2{animation-delay:.14s} .r3{animation-delay:.23s} .r4{animation-delay:.32s} .r5{animation-delay:.42s} .r6{animation-delay:.5s} .r7{animation-delay:.58s} .r8{animation-delay:.66s} .r9{animation-delay:.74s} .r10{animation-delay:.82s} .r11{animation-delay:.9s} .r12{animation-delay:.98s} .r13{animation-delay:1.06s} .r14{animation-delay:1.14s} .r15{animation-delay:1.22s} .r16{animation-delay:1.3s} .r17{animation-delay:1.38s} .r18{animation-delay:1.46s} .r19{animation-delay:1.54s} .r20{animation-delay:1.62s}
+  .r1{animation-delay:.05s} .r2{animation-delay:.14s} .r3{animation-delay:.23s} .r4{animation-delay:.32s} .r5{animation-delay:.42s} .r6{animation-delay:.5s} .r7{animation-delay:.58s} .r8{animation-delay:.66s} .r9{animation-delay:.74s} .r10{animation-delay:.82s} .r11{animation-delay:.9s} .r12{animation-delay:.98s} .r13{animation-delay:1.06s} .r14{animation-delay:1.14s} .r15{animation-delay:1.22s} .r16{animation-delay:1.3s} .r17{animation-delay:1.38s} .r18{animation-delay:1.46s} .r19{animation-delay:1.54s} .r20{animation-delay:1.62s} .r21{animation-delay:1.7s} .r22{animation-delay:1.78s}
   .tag.on { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 
   /* ── footer status ── */
@@ -134,11 +134,39 @@
         <div class="eyebrow">Selected work</div>
         <h1>Projects<em>.</em></h1>
       </div>
-      <div class="count">Selected work<br/><b>18</b> / live &amp; open source</div>
+      <div class="count">Selected work<br/><b>20</b> / live &amp; open source</div>
     </header>
 
     <main class="grid">
-      <a class="card rise r3" href="https://flyprisen.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r3" href="https://toppkart.no/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-idx">20</span>
+          <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Maps</span></div>
+        </div>
+        <h2 class="card-title">Topp<em>kart</em></h2>
+        <p class="card-desc">Every ski tour in Norway on one map — 214 vetted routes from Lyngen down to Sirdal, each with its elevation profile, typical time, descent notes and GPX file. The avalanche terrain is drawn in: gradient, runout zones and exposure, tied to the live Varsom forecast for the region you're standing in.</p>
+        <div class="motif"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="card-foot">
+          <span class="repo"><b>toppkart</b>.no</span>
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+      </a>
+
+      <a class="card rise r4" href="https://nordwalk.no/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-idx">19</span>
+          <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Travel</span></div>
+        </div>
+        <h2 class="card-title">Nord<em>walk</em></h2>
+        <p class="card-desc">Walking guides for cruise passengers with six hours ashore. Bergen, Oslo, Ålesund and Geiranger routed stop by stop with real timings, sold as plain PDFs for a hundred kroner — no app, no account, no roaming data once the ship has left the wifi behind.</p>
+        <div class="motif"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="card-foot">
+          <span class="repo"><b>nordwalk</b>.no</span>
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+      </a>
+
+      <a class="card rise r5" href="https://flyprisen.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">18</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">React</span><span class="tag">Travel</span></div>
@@ -152,7 +180,7 @@
         </div>
       </a>
 
-      <a class="card rise r4" href="https://matvareleksikon.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r6" href="https://prisboka.no/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">17</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">PWA</span><span class="tag">AI</span></div>
@@ -161,12 +189,12 @@
         <p class="card-desc">A grocery encyclopedia built on real Norwegian prices — pulled from the chains' weekly offer catalogues and topped up by receipts people scan, which an AI reads into line items. Look up a product, compare it per kilo across Rema, Kiwi, Meny and Oda, and see where the price is heading.</p>
         <div class="motif"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="card-foot">
-          <span class="repo"><b>matvareleksikon</b>.vercel.app</span>
+          <span class="repo"><b>prisboka</b>.no</span>
           <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
         </div>
       </a>
 
-      <a class="card rise r5" href="https://ferry-navigator.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r7" href="https://ferry-navigator.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">16</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Entur API</span><span class="tag">Maps</span></div>
@@ -180,7 +208,7 @@
         </div>
       </a>
 
-      <a class="card rise r6" href="https://shares-analytics.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r8" href="https://shares-analytics.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">15</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Quant</span><span class="tag">Finance</span></div>
@@ -194,7 +222,7 @@
         </div>
       </a>
 
-      <a class="card rise r7" href="https://nabolager-five.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r9" href="https://nabolager-five.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">14</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Supabase</span></div>
@@ -208,7 +236,7 @@
         </div>
       </a>
 
-      <a class="card rise r8" href="https://garasjenabo.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r10" href="https://garasjenabo.no/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">13</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Stripe</span></div>
@@ -217,12 +245,12 @@
         <p class="card-desc">A marketplace for the parking spot standing empty behind your building — garages, parking and EV chargers rented by the hour, the day or the month. Card payment through Stripe, encrypted chat between the two parties for keys and access, and the listing owner sets price, rules and availability.</p>
         <div class="motif"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="card-foot">
-          <span class="repo"><b>garasjenabo</b>.vercel.app</span>
+          <span class="repo"><b>garasjenabo</b>.no</span>
           <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
         </div>
       </a>
 
-      <a class="card rise r9" href="https://nordlys-terminal.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r11" href="https://nordlys-terminal.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">12</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Markets</span><span class="tag">AI</span></div>
@@ -236,7 +264,7 @@
         </div>
       </a>
 
-      <a class="card rise r10" href="https://axiom-tawny-delta.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r12" href="https://axiom-tawny-delta.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">11</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">React</span><span class="tag">Finance</span></div>
@@ -250,7 +278,7 @@
         </div>
       </a>
 
-      <a class="card rise r11" href="https://storebrand-aksjeoversikt.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r13" href="https://storebrand-aksjeoversikt.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">10</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Finance</span></div>
@@ -264,7 +292,7 @@
         </div>
       </a>
 
-      <a class="card rise r12" href="https://cadence-aksjeanalyse.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r14" href="https://cadence-aksjeanalyse.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">09</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Analytics</span><span class="tag">Trading</span></div>
@@ -278,7 +306,7 @@
         </div>
       </a>
 
-      <a class="card rise r13" href="https://portfolio-nok-demo.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r15" href="https://portfolio-nok-demo.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">08</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Finance</span></div>
@@ -292,7 +320,7 @@
         </div>
       </a>
 
-      <a class="card rise r14" href="https://billigkurv.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r16" href="https://billigkurv.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">07</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">AI</span></div>
@@ -306,7 +334,7 @@
         </div>
       </a>
 
-      <a class="card rise r15" href="https://github.com/Sindre31/ai-investment-memo-copilot" target="_blank" rel="noopener">
+      <a class="card rise r17" href="https://github.com/Sindre31/ai-investment-memo-copilot" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">06</span>
           <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LLM</span></div>
@@ -320,7 +348,7 @@
         </div>
       </a>
 
-      <a class="card rise r16" href="https://orakel-vm-fantasy-2026.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r18" href="https://orakel-vm-fantasy-2026.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">05</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Fantasy</span></div>
@@ -334,7 +362,7 @@
         </div>
       </a>
 
-      <a class="card rise r17" href="https://github.com/Sindre31/Customer-Churn-Intelligence-Lab" target="_blank" rel="noopener">
+      <a class="card rise r19" href="https://github.com/Sindre31/Customer-Churn-Intelligence-Lab" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">04</span>
           <div class="tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">pandas</span></div>
@@ -348,7 +376,7 @@
         </div>
       </a>
 
-      <a class="card rise r18" href="https://bremanger-kalender-demo.vercel.app/" target="_blank" rel="noopener">
+      <a class="card rise r20" href="https://bremanger-kalender-demo.vercel.app/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">03</span>
           <div class="tags"><span class="tag on">Live</span><span class="tag">Next.js</span><span class="tag">Demo</span></div>
@@ -362,7 +390,7 @@
         </div>
       </a>
 
-      <a class="card rise r19" href="https://github.com/Sindre31/ML_Model_Fish_Data" target="_blank" rel="noopener">
+      <a class="card rise r21" href="https://github.com/Sindre31/ML_Model_Fish_Data" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">02</span>
           <div class="tags"><span class="tag">Jupyter</span><span class="tag">scikit-learn</span></div>
@@ -376,7 +404,7 @@
         </div>
       </a>
 
-      <a class="card rise r20" href="https://github.com/Sindre31/sindre-webpage" target="_blank" rel="noopener">
+      <a class="card rise r22" href="https://github.com/Sindre31/sindre-webpage" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-idx">01</span>
           <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
@@ -392,7 +420,7 @@
     </main>
 
     <div class="footrow rise r6">
-      <span class="live">18 projects</span>
+      <span class="live">20 projects</span>
       <span class="footnav"><a href="index.html" data-nav>↩ Index</a> · <a href="about.html" data-nav>About →</a></span>
     </div>
   </div>
