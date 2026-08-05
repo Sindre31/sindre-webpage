@@ -13,6 +13,33 @@
 <meta property="og:description" content="Sindre Stolt-Nielsen — personal index." />
 <meta property="og:image" content="https://sindre.app/images/sindre.jpeg" />
 <meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://sindre.app/#person",
+      "name": "Sindre Stolt-Nielsen",
+      "givenName": "Sindre",
+      "familyName": "Stolt-Nielsen",
+      "url": "https://sindre.app/",
+      "image": "https://sindre.app/images/sindre.jpeg",
+      "email": "mailto:stolt@live.no",
+      "homeLocation": { "@type": "Place", "name": "Ålesund, Norway" },
+      "sameAs": ["https://github.com/Sindre31"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sindre.app/#website",
+      "url": "https://sindre.app/",
+      "name": "Sindre Stolt-Nielsen",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://sindre.app/#person" }
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <link rel="stylesheet" href="theme.css" />
 <script src="analytics.js"></script>
@@ -209,20 +236,51 @@
   <canvas id="bg"></canvas>
   <span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>
 
-  <div id="app"></div>
+  <!--
+    The hero below is the crawlable copy of what App() renders. React replaces
+    it on mount, so it must stay in sync with the markup in app.jsx — without it
+    the page ships no indexable text at all, since everything else is client-rendered.
+  -->
+  <div id="app">
+    <div class="stage">
+      <div class="frame-tick ft-tl rev d1"><span class="dot"></span> 62.47°N / 6.15°E</div>
+      <div class="frame-tick ft-tr rev d1">EST. 2003 · ÅLESUND</div>
+
+      <main class="hero">
+        <div class="eyebrow rev d1">Project Website</div>
+        <h1 class="name">
+          <span class="mask m1"><span>Sindre</span></span>
+          <span class="l2 mask m2"><span>Stolt<span class="nib">·</span>Nielsen</span></span>
+        </h1>
+        <div class="subtitle rev d3">
+          <span>Bergen</span><span class="pipe">/</span><span>Berkeley</span>
+          <span class="pipe">·</span><span>IT &amp; Economics</span>
+        </div>
+
+        <a href="projects.html" class="enter rev d4">
+          <span class="en-idx">00 ▸</span>
+          <span class="en-main">
+            <span class="en-title">Projects</span>
+            <span class="en-sub">Selected work · 20 entries</span>
+          </span>
+          <span class="en-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </main>
+    </div>
+  </div>
 
   <div class="wipe"><div class="wipe-mark">// loading</div></div>
 
-  <!-- React + Babel (pinned) -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <!-- React (pinned, production builds). JSX is precompiled — see build.js. -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
   <script src="bg-field.js"></script>
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script src="tweaks-panel.js"></script>
 
-  <script type="text/babel">
-    const { useState, useEffect, useRef } = React;
-
+  <!-- Stays inline: the edit-mode host rewrites this block on disk. -->
+  <script>
     const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
       "bgMode": "flow",
       "accent": "#FF6A3D",
@@ -230,124 +288,9 @@
       "grain": true,
       "scanlines": true
     }/*EDITMODE-END*/;
-
-    const ACCENTS = ["#C2F24A", "#4ED8E6", "#FF6A3D", "#B98CFF", "#ECEAE3"];
-    const MODES = ["flow", "grid", "plasma"];
-
-    function useClock() {
-      const [now, setNow] = useState("");
-      useEffect(() => {
-        const tick = () => {
-          const s = new Date().toLocaleTimeString("en-GB", { timeZone: "Europe/Oslo", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
-          setNow(`${s} OSLO`);
-        };
-        tick();
-        const id = setInterval(tick, 1000);
-        return () => clearInterval(id);
-      }, []);
-      return now;
-    }
-
-    function App() {
-      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-      const fieldRef = useRef(null);
-      const clock = useClock();
-
-      // boot the canvas field once
-      useEffect(() => {
-        const cv = document.getElementById("bg");
-        const f = new BackgroundField(cv, {
-          mode: t.bgMode, accent: t.accent, intensity: t.intensity, bg: "#08080A"
-        });
-        f.start();
-        fieldRef.current = f;
-        const onMove = (e) => f.setMouse(e.clientX / window.innerWidth, e.clientY / window.innerHeight);
-        window.addEventListener("pointermove", onMove);
-        const onVis = () => (document.hidden ? f.stop() : f.start());
-        document.addEventListener("visibilitychange", onVis);
-        return () => {
-          window.removeEventListener("pointermove", onMove);
-          document.removeEventListener("visibilitychange", onVis);
-          f.destroy();
-        };
-      }, []);
-
-      // react to tweaks
-      useEffect(() => {
-        document.documentElement.style.setProperty("--accent", t.accent);
-        try { localStorage.setItem("site-accent", t.accent); } catch (e) {}
-        if (fieldRef.current) fieldRef.current.setOptions({ accent: t.accent, mode: t.bgMode, intensity: t.intensity });
-      }, [t.accent, t.bgMode, t.intensity]);
-
-      // tweaks panel mounts below; intro animation safety net
-      useEffect(() => {
-        const id = setTimeout(() => document.documentElement.classList.add("anim-settled"), 1700);
-        return () => clearTimeout(id);
-      }, []);
-
-      const go = (e) => {
-        e.preventDefault();
-        const wipe = document.querySelector(".wipe");
-        wipe.querySelector(".wipe-mark").textContent = "// projects";
-        wipe.classList.add("in");
-        setTimeout(() => { window.location.href = "projects.html"; }, 540);
-      };
-
-      return (
-        <div className="stage">
-          {t.grain && <div className="fx-grain"></div>}
-          {t.scanlines && <div className="fx-scan"></div>}
-
-          <div className="frame-tick ft-tl rev d1"><span className="dot"></span> 62.47°N / 6.15°E</div>
-          <div className="frame-tick ft-tr rev d1">EST. 2003 · ÅLESUND</div>
-
-          <main className="hero">
-            <div className="eyebrow rev d1">Project Website</div>
-            <h1 className="name">
-              <span className="mask m1"><span>Sindre</span></span>
-              <span className="l2 mask m2"><span>Stolt<span className="nib">·</span>Nielsen</span></span>
-            </h1>
-            <div className="subtitle rev d3">
-              <span>Bergen</span><span className="pipe">/</span><span>Berkeley</span>
-              <span className="pipe">·</span><span>IT &amp; Economics</span>
-            </div>
-
-            <a href="projects.html" className="enter rev d4" onClick={go}>
-              <span className="en-idx">00 ▸</span>
-              <span className="en-main">
-                <span className="en-title">Projects</span>
-                <span className="en-sub">Selected work · 20 entries</span>
-              </span>
-              <span className="en-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
-              </span>
-            </a>
-          </main>
-
-          <div className="status rev d5">
-            <span className="live">System nominal</span>
-            <span className="clock">{clock}</span>
-          </div>
-
-          <TweaksPanel>
-            <TweakSection label="Background field" />
-            <TweakRadio label="Mode" value={t.bgMode} options={MODES}
-              onChange={(v) => setTweak("bgMode", v)} />
-            <TweakSlider label="Intensity" value={t.intensity} min={0.4} max={1.6} step={0.1}
-              onChange={(v) => setTweak("intensity", v)} />
-            <TweakSection label="Accent" />
-            <TweakColor label="Signal" value={t.accent} options={ACCENTS}
-              onChange={(v) => setTweak("accent", v)} />
-            <TweakSection label="Texture" />
-            <TweakToggle label="Film grain" value={t.grain} onChange={(v) => setTweak("grain", v)} />
-            <TweakToggle label="Scanlines" value={t.scanlines} onChange={(v) => setTweak("scanlines", v)} />
-          </TweaksPanel>
-        </div>
-      );
-    }
-
-    ReactDOM.createRoot(document.getElementById("app")).render(<App />);
   </script>
+
+  <script src="app.js"></script>
   <!-- Vercel Web Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
