@@ -79,7 +79,7 @@ function App() {
     wipe.querySelector(".wipe-mark").textContent = "// projects";
     wipe.classList.add("in");
     setTimeout(() => {
-      window.location.href = "projects.html";
+      window.location.href = "/projects.html";
     }, 540);
   };
   return /*#__PURE__*/React.createElement("div", {
@@ -113,7 +113,7 @@ function App() {
   }, "/"), /*#__PURE__*/React.createElement("span", null, "Berkeley"), /*#__PURE__*/React.createElement("span", {
     className: "pipe"
   }, "\xB7"), /*#__PURE__*/React.createElement("span", null, "IT & Economics")), /*#__PURE__*/React.createElement("a", {
-    href: "projects.html",
+    href: "/projects.html",
     className: "enter rev d4",
     onClick: go
   }, /*#__PURE__*/React.createElement("span", {

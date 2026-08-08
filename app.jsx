@@ -63,7 +63,7 @@ function App() {
     const wipe = document.querySelector(".wipe");
     wipe.querySelector(".wipe-mark").textContent = "// projects";
     wipe.classList.add("in");
-    setTimeout(() => { window.location.href = "projects.html"; }, 540);
+    setTimeout(() => { window.location.href = "/projects.html"; }, 540);
   };
 
   return (
@@ -85,7 +85,7 @@ function App() {
           <span className="pipe">·</span><span>IT &amp; Economics</span>
         </div>
 
-        <a href="projects.html" className="enter rev d4" onClick={go}>
+        <a href="/projects.html" className="enter rev d4" onClick={go}>
           <span className="en-idx">00 ▸</span>
           <span className="en-main">
             <span className="en-title">Projects</span>

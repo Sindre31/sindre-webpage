@@ -350,14 +350,14 @@
 
   <div class="shell">
     <div class="topbar rise r1">
-      <a href="index.html" class="brand" data-nav>
+      <a href="/" class="brand" data-nav>
         <span class="glyph">S</span>
         <span><span class="bt">Sindre Stolt-Nielsen</span><span class="bs">Project Website</span></span>
       </a>
       <nav class="topnav">
-        <a href="index.html" data-nav><span class="n">↩</span> Index</a>
-        <a href="projects.html" class="cur"><span class="n">01</span> Projects</a>
-        <a href="about.html" data-nav><span class="n">02</span> About</a>
+        <a href="/" data-nav><span class="n">↩</span> Index</a>
+        <a href="/projects.html" class="cur"><span class="n">01</span> Projects</a>
+        <a href="/about.html" data-nav><span class="n">02</span> About</a>
       </nav>
     </div>
 
@@ -653,7 +653,7 @@
 
     <div class="footrow rise r6">
       <span class="live">20 projects</span>
-      <span class="footnav"><a href="index.html" data-nav>↩ Index</a> · <a href="about.html" data-nav>About →</a></span>
+      <span class="footnav"><a href="/" data-nav>↩ Index</a> · <a href="/about.html" data-nav>About →</a></span>
     </div>
   </div>
 
@@ -676,7 +676,7 @@
           if (!href || href.charAt(0) === '#') return;
           e.preventDefault();
           var w = document.querySelector('.wipe');
-          w.querySelector('.wipe-mark').textContent = '// ' + href.replace('.html', '');
+          w.querySelector('.wipe-mark').textContent = '// ' + (href.replace(/^\//, '').replace('.html', '') || 'index');
           w.classList.add('in');
           setTimeout(function () { window.location.href = href; }, 540);
         });
