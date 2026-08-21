@@ -89,7 +89,7 @@ function App() {
           <span className="en-idx">00 ▸</span>
           <span className="en-main">
             <span className="en-title">Projects</span>
-            <span className="en-sub">Selected work · 20 entries</span>
+            <span className="en-sub">Selected work · 21 entries</span>
           </span>
           <span className="en-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
