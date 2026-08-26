@@ -124,7 +124,7 @@ function App() {
     className: "en-title"
   }, "Projects"), /*#__PURE__*/React.createElement("span", {
     className: "en-sub"
-  }, "Selected work \xB7 21 entries")), /*#__PURE__*/React.createElement("span", {
+  }, "Selected work \xB7 22 entries")), /*#__PURE__*/React.createElement("span", {
     className: "en-arrow"
   }, /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 24 24",
